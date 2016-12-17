@@ -2,6 +2,8 @@ FROM php:7-fpm
 
 ENV PHALCON_VERSION=3.0.1
 
+RUN apt-get update && apt-get install -y libssl-dev
+
 # Compile Phalcon
 RUN set -xe && \
         curl -LO https://github.com/phalcon/cphalcon/archive/v${PHALCON_VERSION}.tar.gz && \
@@ -13,3 +15,7 @@ RUN set -xe && \
         tar xzf v${PHALCON_VERSION}.tar.gz && \
         mv phalcon-devtools-${PHALCON_VERSION} /usr/local/phalcon-devtools && \
         ln -s /usr/local/phalcon-devtools/phalcon.php /usr/local/bin/phalcon
+
+RUN pecl install mongodb
+
+RUN echo "extension=mongodb.so" > $PHP_INI_DIR/conf.d/mongodb.ini

@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  nginx:
+    build: ./docker/nginx
+    ports:
+     - 8080:80
+    links:
+     - php
+     - mongo
+    volumes:
+     - .:/var/www/phalcon-medias-project
+    environment:
+     - VIRTUAL_HOST=local.phalcon-medias.dev
+     - ROOT_PATH=/var/www/phalcon-medias-project/public
+     - PHP_CONTAINER_NAME=php
+    command: /bin/bash -c "envsubst '$${VIRTUAL_HOST} $${ROOT_PATH} $${PHP_CONTAINER_NAME}' < /etc/nginx/conf.d/api.template >> /etc/nginx/conf.d/api.conf && nginx -g 'daemon off;'"
+
+  php:
+    build: ./docker/php
+    expose:
+     - 9000
+    volumes:
+     - .:/var/www/phalcon-medias-project
+
+  mongo:
+    image: mongo:3.2
+    expose:
+      - "27017"
+    ports:
+      - "27017:27017"

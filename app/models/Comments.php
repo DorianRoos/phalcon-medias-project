@@ -12,7 +12,7 @@ use Phalcon\Mvc\MongoCollection;
 class Comments extends MongoCollection
 {
     /** @var  String */
-    private $content;
+    protected $content;
 
     /**
      * @return String

@@ -8,8 +8,59 @@
 
 namespace PhalconMedias\Api\Controllers;
 
+use Phalcon\Http\Response;
+use PhalconMedias\Api\Models\Comments;
 
-class CommentController
+class CommentController extends RestController
 {
+    /**
+     * @return Response
+     */
+    public function getAction(): Response
+    {
+        $toto = Comments::find();
+        var_dump($toto[0]->getContent());
+        die();
+        $this->response->setJsonContent($comments);
+        return $this->response;
+    }
 
+    /**
+     * @param int $id
+     * @return Response
+     */
+    public function getByIdAction(int $id): Response
+    {
+        $this->response->setJsonContent(array("status post" => "OK"));
+        return $this->response;
+    }
+
+    /**
+     * @return Response
+     */
+    public function saveAction(): Response
+    {
+        $this->response->setJsonContent(array("status post" => "OK"));
+        return $this->response;
+    }
+
+    /**
+     * @param int $id
+     * @return Response
+     */
+    public function editAction(int $id): Response
+    {
+        $this->response->setJsonContent(array("status put" => "OK"));
+        return $this->response;
+    }
+
+    /**
+     * @param int $id
+     * @return Response
+     */
+    public function deleteAction(int $id): Response
+    {
+        $this->response->setJsonContent(array("status delete" => "OK"));
+        return $this->response;
+    }
 }

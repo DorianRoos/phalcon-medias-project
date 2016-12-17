@@ -9,7 +9,7 @@
 namespace PhalconMedias\Api\Models;
 
 
-class Base
+abstract class Base
 {
-
+    protected $last_updated;
 }
