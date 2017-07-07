@@ -11,6 +11,11 @@ use Phalcon\Mvc\MongoCollection;
 
 class Comments extends MongoCollection
 {
+    public function initialize()
+    {
+        $this->setSource('comments');
+    }
+
     /** @var  String */
     protected $content;
 

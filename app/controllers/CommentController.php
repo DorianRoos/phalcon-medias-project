@@ -19,7 +19,7 @@ class CommentController extends RestController
     public function getAction(): Response
     {
         $toto = Comments::find();
-        var_dump($toto[0]->getContent());
+        var_dump($toto);
         die();
         $this->response->setJsonContent($comments);
         return $this->response;

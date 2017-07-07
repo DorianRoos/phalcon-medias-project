@@ -2,7 +2,6 @@
 
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\Url as UrlResolver;
-use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Phalcon\Flash\Direct as Flash;
@@ -29,7 +28,7 @@ $di->setShared('url', function () {
     return $url;
 });
 
-$di->setShared('mongo', function() {
+$di->set('mongo', function() {
     $mongo = new \Phalcon\Db\Adapter\MongoDB\Client('mongodb://mongo:27017');
     return $mongo->selectDatabase('medias-project');
 });

@@ -11,6 +11,7 @@
   ],
   "require": {
     "phalcon/incubator": "~3.0",
-    "mongodb/mongodb": "^1.0.0"
+    "phalcon/ide-stubs": "*",
+    "mongodb/mongodb": "*"
   }
 }

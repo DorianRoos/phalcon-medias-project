@@ -1,8 +1,8 @@
 FROM php:7-fpm
 
-ENV PHALCON_VERSION=3.0.1
+ENV PHALCON_VERSION=3.1.2
 
-RUN apt-get update && apt-get install -y libssl-dev
+RUN apt-get update && apt-get install -y libssl-dev git
 
 # Compile Phalcon
 RUN set -xe && \

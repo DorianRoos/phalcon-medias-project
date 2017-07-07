@@ -24,7 +24,7 @@ services:
      - .:/var/www/phalcon-medias-project
 
   mongo:
-    image: mongo:3.2
+    image: mongo:3
     expose:
       - "27017"
     ports:
